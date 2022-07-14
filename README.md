@@ -1,8 +1,10 @@
 # IoTEdgeEnvTestSolution
 
-Demonstration of reading environment variables by an Azure ioT Edge module. 
+Demonstration of reading custom environment variables by an Azure ioT Edge module. 
 
 When the module starts, a number of environment variables are read.
+
+_Note_: This includes the already used Azure IoT Edge module specific variables. Check the example below. 
 
 ## Docker container
 
@@ -61,6 +63,8 @@ Found 'HelloVariable'
 Found '{ "someInteger" : 42, "someString" : "Hello module" }', containing '42' and 'Hello module'
 End reading environment variables.
 ```
+
+As you can see, both the Azure IoT Edge module specific variables and our custom environment variables are shown.
 
 ## Usage
 
