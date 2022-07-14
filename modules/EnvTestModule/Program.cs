@@ -1,6 +1,7 @@
 namespace EnvTestModule
 {
     using System;
+    using System.Collections;
     using System.IO;
     using System.Runtime.InteropServices;
     using System.Runtime.Loader;
@@ -58,7 +59,49 @@ namespace EnvTestModule
 
         private static void ReadEnvironmentValues()
         {
-            
+            Console.WriteLine("Start reading environment variables:");
+
+            Console.WriteLine("GetEnvironmentVariables: ");
+            foreach (DictionaryEntry de in Environment.GetEnvironmentVariables())
+            {
+                Console.WriteLine("  {0} = {1}", de.Key, de.Value);
+            }
+
+            Console.WriteLine();
+
+            //// variableString
+
+            var environmentStringValue = Environment.GetEnvironmentVariable("variableString");
+
+            if (!string.IsNullOrEmpty(environmentStringValue))
+            {
+                Console.WriteLine($"Found '{environmentStringValue}'");
+            }
+            else
+            {
+                Console.WriteLine($"No environment variable '{nameof(environmentStringValue)}' found.");
+            }
+
+            //// variableJSON
+
+            var environmentJSONValue = Environment.GetEnvironmentVariable("variableJSON");
+
+            if (!string.IsNullOrEmpty(environmentJSONValue))
+            {
+                dynamic jsonObject = Newtonsoft.Json.JsonConvert.DeserializeObject(environmentJSONValue);
+
+                var valueSomeInteger = (int)jsonObject.someInteger;
+
+                var ValueSomeString = (string)jsonObject.someString;
+
+                Console.WriteLine($"Found '{environmentJSONValue}', containing '{valueSomeInteger}' and '{ValueSomeString}'");
+            }
+            else
+            {
+                Console.WriteLine($"No environment variable '{nameof(environmentJSONValue)}' found.");
+            }
+
+            Console.WriteLine("End reading environment variables.");
         }
 
         /// <summary>
@@ -94,6 +137,10 @@ namespace EnvTestModule
                 }
             }
             return MessageResponse.Completed;
+        }
+
+        private class JsonConvert
+        {
         }
     }
 }
