@@ -36,6 +36,11 @@ Pass a JSON formatted text with these two variables:
 
 ## Example output
 
+This is tested with these environment variables:
+
+![image](https://user-images.githubusercontent.com/694737/178969171-a0d46580-9690-4ddd-9c7a-ebff47f01977.png)
+
+
 The following output is to be expected:
 
 ```
