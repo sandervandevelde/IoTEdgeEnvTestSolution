@@ -30,7 +30,6 @@ Pass a JSON formatted text with these two variables:
     "someInteger" : 42,
     "someString" : "Hello module"
 }
-
 ```
 
 ## Example output
